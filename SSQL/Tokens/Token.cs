@@ -39,6 +39,26 @@ public class Token
         return Equals(token);
     }
 
+    public static bool operator ==(Token? a, Token? b)
+    {
+        if (a is null && b is null)
+        {
+            return true;
+        }
+
+        if (a is null || b is null)
+        {
+            return false;
+        }
+
+        return a.Equals(b);
+    }
+
+    public static bool operator !=(Token? a, Token? b)
+    {
+        return !(a == b);
+    }
+
     private bool Equals(Token other)
     {
         return Type == other.Type && Literal == other.Literal;
